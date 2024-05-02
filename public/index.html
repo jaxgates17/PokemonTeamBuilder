@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Team Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="app-body">
+    <div id="app">
+        <header>
+            <h1>Pokemon Team Builder</h1>
+        </header>
+
+        
+
+        <div v-if="!showIndex" class="center-content">
+            <div v-if="!showRegistration" class="center-content">
+                <h1>Login</h1>
+                <form @submit.prevent="loginUser" id="login-form">
+                <div id="lolnice">
+                    <input type="email" v-model="loginemail" placeholder="Email" required>
+                    <input type="password" v-model="loginplainPassword" placeholder="Password" required>
+                </div>
+                    <button type="submit">Login</button>
+                </form>
+                <p id="message"></p>
+                <button type="submit" @click="showRegistration = true">Create Account</button>
+            </div>
+            <div v-else class="center-content">
+                <h1>Create Account</h1>
+                <form @submit.prevent="registerUser" id="registration-form">
+                <div id="lolnice">
+                    <input type="text" v-model="firstName" placeholder="First Name" required>
+                    <input type="text" v-model="lastName" placeholder="Last Name" required>
+                
+                    <input type="email" v-model="email" placeholder="Email" required>
+                    <input type="password" v-model="plainPassword" placeholder="Password" required>
+                </div>
+                    <button type="submit">Create Account</button>
+                </form>
+                <button type="submit" @click="showRegistration = false">Back to Login</button>
+            </div>
+        </div>
+    
+    <div v-if="showIndex">
+    <header>
+        <div class="nav-buttons">
+            <button @click="logout">Logout</button>
+        </div>
+    </header>
+
+    
+
+    <div class="container">
+        <div class="sidebar sidebar-left"></div>
+        <div class="inner-sidebar-left"></div>
+        <div class="content">
+            <p>Welcome to Pokemon Team Builder! Create and manage your ultimate Pokemon teams with ease.</p>
+            <button class="create-team-btn" @click="togglePopup"  v-if="showCreateButton">Create New Team</button>
+            <div class="popup-menu" id="popup-menu">
+                
+                <h2 id="center-text">Create New Team</h2>
+            <div id="enterTeamName">
+                <input type="text" v-model="teamName" placeholder="Enter team name" maxlength="30">
+            </div>
+                <div class="pokemon-slots">
+                    <div class="pokemon-slot" id="slot-1" >
+                        <img class="pokemon-sprite"  alt="" >
+                        <p class="pokemon-name"></p>
+                        <p class="pokemon-type"></p>
+                        <span  class="delete-icon" @click="deletePokemon(0)">🗑️</span> 
+                    </div>
+                    <div class="pokemon-slot" id="slot-2">
+                        <img class="pokemon-sprite" alt="">
+                        <p class="pokemon-name"></p>
+                        <p class="pokemon-type"></p>
+                        <span class="delete-icon" @click="deletePokemon(1)">🗑️</span> 
+                    </div>
+
+                    <div class="pokemon-slot" id="slot-3">
+                        <img class="pokemon-sprite" alt="">
+                        <p class="pokemon-name"></p>
+                        <p class="pokemon-type"></p>
+                        <span class="delete-icon" @click="deletePokemon(2)">🗑️</span> 
+                    </div>
+
+                    <div class="pokemon-slot" id="slot-4">
+                        <img class="pokemon-sprite" alt="">
+                        <p class="pokemon-name"></p>
+                        <p class="pokemon-type"></p>
+                        <span class="delete-icon" @click="deletePokemon(3)">🗑️</span> 
+                    </div>
+
+                    <div class="pokemon-slot" id="slot-5">
+                        <img class="pokemon-sprite" alt="">
+                        <p class="pokemon-name"></p>
+                        <p class="pokemon-type"></p>
+                        <span  class="delete-icon" @click="deletePokemon(4)">🗑️</span> 
+                    </div>
+
+                    <div class="pokemon-slot" id="slot-6">
+                        <img class="pokemon-sprite" alt="">
+                        <p class="pokemon-name"></p>
+                        <p class="pokemon-type"></p>
+                        <span  class="delete-icon" @click="deletePokemon(5)">🗑️</span> 
+                    </div>
+                    
+                </div>
+                <div id="buttons">
+                    <input type="text" id="search-field" placeholder="Search Pokemon">
+                    <button @click="searchPokemon"  id="add-btn">Add</button>
+                </div>
+                <div id="buttons2">
+                    <button @click="saveTeam" id="save-btn">Save Team</button>
+                    <button @click="togglePopup"  id="cancel-btn">Cancel</button>
+                </div>
+                
+            </div>
+            
+
+            <div id="team-container">
+                <h2>My Teams</h2>
+                <div v-for="(team, index) in teams" :key="index" class="team-row">
+                    <p id="teamName">{{ team.teamName }}</p>
+                    <div class="sprites">
+                    <template v-for="(sprite, spriteIndex) in team.sprite">
+                        <img :src="sprite" alt="Pokemon Sprite">
+                        <span v-if="spriteIndex !== team.sprite.length - 1"> </span>
+                    </template>
+                    </div>
+                <div class = "buttons">
+                    <button @click="viewTeam(team._id)">View Team</button>
+                    <button @click="deleteTeam(index)">Delete Team</button>
+                </div>  
+                </div>
+            </div>
+
+            <div v-if="topPokemon && topPokemon.length" id="statistics-container">
+                <h2>Statistics</h2>
+                <h3>Top 5 Popular Pokémon</h3>
+                <ul class="top-pokemon-list">
+                    <li v-for="(pokemon, index) in topPokemon" :key="index">
+                        {{ pokemon._id }} ({{ pokemon.count }} times)
+                    </li>
+                </ul>
+            </div>
+
+
+            <footer>
+                &copy; 2024 Jax Gates
+            </footer>
+
+        </div>
+        <div class="inner-sidebar-right"></div>
+        <div class="sidebar sidebar-right"></div>
+    </div>
+</div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+.content p {
+    font-size: 16px;
+    line-height: 1.5; 
+    margin: 20px; 
+    text-align: center;
+}
+
+.create-team-btn {
+    display: block; 
+    margin: 20px auto; 
+    padding: 10px 20px; 
+    font-size: 16px;
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.create-team-btn:hover {
+    background-color: #0056b3; 
+}
+header {
+    background-color: #333; 
+    color: white; 
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+}
+
+.sidebar-left, .sidebar-right {
+    background-color: #a91101;
+    flex: 0 0 100px;
+    
+}
+
+.inner-sidebar-left, .inner-sidebar-right {
+    background-color: gray;
+    flex: 0 0 100px;
+}
+.popup-menu {
+    display: none; 
+    width: 700px; 
+    height: 400px;
+    padding: 20px; 
+    background-color: #66a3d2;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    margin: 0 auto; 
+}
+
+.content {
+    background-color: lightgrey;
+    flex: 1; 
+    overflow: auto; 
+}
+
+.popup-menu.show {
+    display: block; 
+}
+
+.popup-menu h2 {
+    margin-top: 0;
+}
+
+.popup-menu input[type="text"],
+.popup-menu button {
+    margin-top: 10px;
+}
+
+#add-btn,
+#save-btn,
+#cancel-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+#add-btn:hover,
+#save-btn:hover,
+#cancel-btn:hover {
+    background-color: #0056b3; 
+}
+
+
+
+#buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#buttons2 {
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
+}
+#buttons input {
+    margin-right: 10px; 
+}
+#buttons2 button {
+    margin-right: 10px;
+}
+.pokemon-slots {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+}
+
+
+
+.pokemon-slot {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    margin-right: 10px;
+    
+}
+.pokemon-sprite {
+    border: 2px solid white; 
+}
+
+.pokemon-slot img {
+    width: 80px;
+    height: 80px;
+}
+
+.pokemon-name {
+    margin: 5px 0;
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+#center-text {
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 24px;
+    color: #333; 
+}
+
+#enterTeamName {
+    margin-top: 20px;
+    text-align: center; 
+}
+
+#enterTeamName input[type="text"] {
+    text-align: center;
+    width: 250px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f0f0f0; 
+}
+
+#enterTeamName input[type="text"]:focus {
+    outline: none; 
+    border-color: #007bff;
+}
+
+
+#team-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.team-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+    border: 2px solid darkgray; 
+    border-radius: 10px; 
+    padding: 10px; 
+    transition: border-color 0.3s; 
+    background-color: #87CEEB;
+}
+
+#teamName {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.sprites {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+}
+
+.buttons button {
+    display: block; 
+    margin: 10px auto;
+    padding: 10px 20px; 
+    font-size: 16px;
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.buttons button:hover {
+    background-color: #0056b3; 
+}
+
+footer {
+    text-align: center;
+    font-style: italic;
+    font-size: 10px;
+    font-family: 'Arial', sans-serif; 
+    color: #666;
+    margin-top: 20px; 
+}
+
+
+.nav-buttons {
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+}
+
+.nav-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+#lolnice {
+    display: block;
+    width: 300px;
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    padding: 10px;
+    margin: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#statistics-container {
+    width: 60%; 
+    margin: 20px auto; 
+    padding: 20px;
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    text-align: center; 
+}
+
+#statistics-container h2 {
+    color: #333; 
+    margin-bottom: 15px;
+}
+
+#statistics-container h3 {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.top-pokemon-list {
+    list-style-type: none;
+    padding: 0; 
+    margin: 0; 
+}
+
+.top-pokemon-list li {
+    font-size: 16px; 
+    padding: 8px 0; 
+    border-bottom: 1px solid #eee;
+    color: #666; 
+}
+
+.top-pokemon-list li:last-child {
+    border-bottom: none;
+}
